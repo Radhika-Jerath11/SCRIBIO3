@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Profile | BlogSpace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/profile.css">
+    <link rel="shortcut icon" href="../static/images/logi.webp" type="image/x-icon">
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <div class="container">
+        <div class="profile-grid">
+            <div class="profile-sidebar">
+                <!-- Profile Image with Safe Check -->
+                {% if user.is_authenticated %}
+                    {% if user.profile_image %}
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAt4NxMCg0JCT3B8rUNZQ6xsWFN8lwMZCnWw&s" 
+                             alt="{{ user.username }}" class="profile-image">
+                    {% else %}
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAt4NxMCg0JCT3B8rUNZQ6xsWFN8lwMZCnWw&s" 
+                             alt="Default Profile" class="profile-image">
+                    {% endif %}
+                {% else %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAt4NxMCg0JCT3B8rUNZQ6xsWFN8lwMZCnWw&s" 
+                         alt="Default Profile" class="profile-image">
+                {% endif %}
+                
+                {% if user.is_authenticated %}
+                    <center><h1>{{ user.username }}</h1></center>
+                {% else %}
+                    <p>User not authenticated</p>
+                {% endif %}
+                <div class="profile-title">Tech Writer & Software Developer</div>
+                
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">47</div>
+                        <div class="stat-label">Articles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15k</div>
+                        <div class="stat-label">Readers</div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-globe"></i></a>
+                </div>
+
+                <a href="/update_profile" class="edit-profile-btn">Edit Profile</a>
+            </div>
+
+            <div class="profile-main">
+                <section class="bio">
+                    <h2 class="section-title">About Me</h2>
+                    <p>Full-stack developer with a passion for writing about technology and software development. I focus on making complex technical concepts accessible to everyone. Currently working on web development projects and writing about modern JavaScript frameworks.</p>
+                </section>
+
+                <section class="expertise">
+                    <h2 class="section-title">Expertise</h2>
+                    <div class="tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Web Development</span>
+                        <span class="tag">Technical Writing</span>
+                    </div>
+                </section>
+
+                <section class="recent-posts">
+                    <h2 class="section-title">Recent Articles</h2>
+                    <div class="post-card">
+                        <h3 class="post-title">Understanding React Hooks: A Comprehensive Guide</h3>
+                        <p class="post-excerpt">Learn how to use React Hooks effectively in your applications with practical examples and best practices...</p>
+                        <div class="post-meta">
+                            <span>2 days ago</span>
+                            <span>5 min read</span>
+                        </div>
+                    </div>
+                    <div class="post-card">
+                        <h3 class="post-title">Modern JavaScript Features You Should Know</h3>
+                        <p class="post-excerpt">Explore the latest JavaScript features that can help you write cleaner and more efficient code...</p>
+                        <div class="post-meta">
+                            <span>1 week ago</span>
+                            <span>7 min read</span>
+                        </div>
+                    </div>
+                    <div class="post-card">
+                        <h3 class="post-title">Building Scalable APIs with Node.js</h3>
+                        <p class="post-excerpt">A step-by-step guide to creating robust and scalable APIs using Node.js and Express...</p>
+                        <div class="post-meta">
+                            <span>2 weeks ago</span>
+                            <span>10 min read</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

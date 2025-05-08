@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile | Wordify</title>
+    <link rel="shortcut icon" href="../static/images/logi.webp" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/update_profile.css">
+</head>
+<body>
+    <div class="bg-elements">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="triangle"></div>
+        <div class="triangle"></div>
+    </div>
+
+    <div class="edit-profile-container">
+        <div class="profile-header">
+            <h2>Edit Profile</h2>
+        </div>
+        
+        <form action="/update_profile" method="POST" enctype="multipart/form-data">
+            <div class="profile-image-upload">
+                <!-- Check if profile_image exists -->
+                {% if user.profile_image %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAt4NxMCg0JCT3B8rUNZQ6xsWFN8lwMZCnWw&s" 
+                         alt="Profile Picture" class="profile-image-preview" id="profile-preview">
+                {% else %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAt4NxMCg0JCT3B8rUNZQ6xsWFN8lwMZCnWw&s" 
+                         alt="Profile Picture" class="profile-image-preview" id="profile-preview">
+                {% endif %}
+
+                <div class="mt-2">
+                    <label class="upload-btn">
+                        <i class="fas fa-camera"></i> Change Photo
+                        <input type="file" name="profile_image" style="display: none;" accept="image/*" onchange="previewImage(event)">
+                    </label>
+                </div>
+            </div> 
+
+            <div class="form-group">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" value="{{ user.username }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" value="{{ user.email }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Bio</label>
+                <textarea class="form-control" name="bio" rows="4" placeholder="Tell us about yourself...">{{ user.bio }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Website</label>
+                <input type="url" class="form-control" name="website" placeholder="https://example.com" value="{{ user.website }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Badges</label>
+                <div class="badge-selection">
+                    <div class="badge-option selected">
+                        <i class="fas fa-award"></i> Top Writer
+                    </div>
+                    <div class="badge-option">
+                        <i class="fas fa-star"></i> Featured Author
+                    </div>
+                    <div class="badge-option">
+                        <i class="fas fa-certificate"></i> Pro Member
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="save-btn">
+                <i class="fas fa-save"></i> Save Changes
+            </button>
+            
+            <a href="/profile" class="cancel-btn">Cancel</a>
+        </form>
+    </div>
+
+    <script src="../static/js/update_profile.js"></script>
+</body>
+</html>

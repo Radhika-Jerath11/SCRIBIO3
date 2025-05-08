@@ -1,0 +1,20 @@
+# Ignore Python virtual environment folders
+myenv/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore database files
+instance/*.db
+*.sqlite3
+
+# Ignore logs
+*.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Allow everything else
+!*/

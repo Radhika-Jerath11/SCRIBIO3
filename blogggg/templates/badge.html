@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge Admin Dashboard</title>
+   <link rel="stylesheet" href="../static/css/badge.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <a href="/home" style="text-decoration: none;"><h1 class="animate-fade-in">SCRIBIO</h1></a>
+            <p class="animate-slide-up">Create and manage your achievement system</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="flash" id="successFlash">
+            Operation completed successfully!
+        </div>
+
+        <div class="controls animate-fade-in">
+            <div class="filter-pills">
+                <button class="pill active">All Badges</button>
+            </div>
+            <input type="text" class="search-box" placeholder="Search badges...">
+        </div>
+
+        <div class="badges-grid">
+            <div class="badge-card animate-scale-in">
+                <div class="badge-icon">✍️</div>
+                <h3 class="badge-title">First Writer</h3>
+                <p class="badge-description">Awarded to users who joined during the beta phase and contributed to platform growth.</p>
+                <div class="badge-meta">
+                    <span>Created: Jan 2025</span>
+                    <span>•</span>
+                    <span>Active Users: 500</span>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-primary">Edit Badge</button>
+                    <button class="btn btn-danger">Archive</button>
+                </div>
+            </div>
+
+            <div class="badge-card animate-scale-in">
+                <div class="badge-icon">🔥</div>
+                <h3 class="badge-title">Trending Author</h3>
+                <p class="badge-description">For users who have made significant contributions to the community growth.</p>
+                <div class="badge-meta">
+                    <span>Created: Feb 2025</span>
+                    <span>•</span>
+                    <span>Active Users: 856</span>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-primary">Edit Badge</button>
+                    <button class="btn btn-danger">Archive</button>
+                </div>
+            </div>
+
+            <div class="badge-card animate-scale-in">
+                <div class="badge-icon">💬</div>
+                <h3 class="badge-title">Engaging Author</h3>
+                <p class="badge-description">Achieved all monthly objectives for three consecutive months.</p>
+                <div class="badge-meta">
+                    <span>Created: Feb 2025</span>
+                    <span>•</span>
+                    <span>Active Users: 432</span>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-primary">Edit Badge</button>
+                    <button class="btn btn-danger">Archive</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions" style="margin-top: 2rem; justify-content: center;">
+            <a href="/create_badge"><button class="btn btn-primary">Create New Badge</button></a>
+        </div>
+    </div>
+
+    <script src="../static/js/badge.js"></script>
+</body>
+</html>

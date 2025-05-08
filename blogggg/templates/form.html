@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge Admin Dashboard</title>
+    <link rel="stylesheet" href="../static/css/form.css">
+</head>
+<body>
+    <div class="container">
+        <div class="badge-form">
+            <h2>Create New Badge</h2>
+            <form id="badgeForm">
+                <div class="form-group">
+                    <label for="badgeTitle">Badge Title</label>
+                    <input type="text" id="badgeTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="badgeDescription">Description</label>
+                    <textarea id="badgeDescription" rows="3" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <a href="/badges"><button type="submit" class="btn btn-primary">Create Badge</button></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+    <h1 class="text-4xl font-bold text-gray-900"> SCRIBIO </h1>
+
+    <!-- Author & Date are simple strings in the JSON -->
+    <p class="mt-2 text-gray-600">
+      {{ blog.author|default:"Unknown Author" }} •
+      {{ blog.date|default:"Unknown Date" }}
+    </p>
+
+    {% if blog.image_path %}
+      <img src="{{ MEDIA_URL }}{{ blog.image_path }}" alt="Blog Image" class="mt-6 rounded-lg">
+    {% else %}
+      <p class="mt-4 italic text-gray-500">No image available for this blog.</p>
+    {% endif %}
+
+    <div class="mt-6 text-gray-800 leading-relaxed text-lg">
+      {{ blog.content|safe }}
+    </div>
+
+    <p class="mt-6 italic text-gray-500">Read Time: {{ blog.read_time|default:"?" }} min</p>
+
+    <div class="mt-8">
+      <a href="{% url 'index' %}" class="text-green-700 hover:underline">← Back to Home</a>
+    </div>
+  </div>
+{% endblock %}

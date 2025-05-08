@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Previous head and style sections remain the same -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scribio - Complete Your Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="../static/images/logi.webp" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+</head>
+<body>
+
+    <div class="bg-elements">
+        <!-- Circles -->
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        
+        <!-- Squares -->
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        
+        <!-- Triangles -->
+        <div class="triangle"></div>
+        <div class="triangle"></div>
+        <div class="triangle"></div>
+        
+        <!-- Glowing orbs -->
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <h2>Complete Your Profile</h2>
+            <p>Help us personalize your experience and connect you with like-minded writers</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="flash">
+                        {% for category, message in messages %}
+                            <li class="flash {{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+            <form class="profile-form" method="POST" action="{{ url_for('dashboard') }}">
+
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required value="{{ user.username }}">
+            </div>
+
+            <div class="form-group">
+                <label for="bio">About Yourself</label>
+                <textarea id="bio" name="bio" placeholder="Tell us about yourself, your writing journey, and what inspires you..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Your Skills</label>
+                <div class="skill-input">
+                    <input type="text" id="skill-input" placeholder="Add your skills...">
+                    <button type="button" class="add-skill-btn">Add</button>
+                </div>
+                <div class="skill-tags">
+                    <!-- Skills will be added here dynamically -->
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Writing Interests</label>
+                <div class="interests-grid">
+                    <div class="interest-item">
+                        <input type="checkbox" id="technology" name="interests[]" value="technology">
+                        <label for="technology"><i class="fas fa-laptop-code"></i> Technology</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="photography" name="interests[]" value="photography">
+                        <label for="photography"><i class="fas fa-camera"></i> Photography</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="cooking" name="interests[]" value="cooking">
+                        <label for="cooking"><i class="fas fa-utensils"></i> Cooking</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="travel" name="interests[]" value="travel">
+                        <label for="travel"><i class="fas fa-plane"></i> Travel</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="health" name="interests[]" value="health">
+                        <label for="health"><i class="fas fa-heartbeat"></i> Health</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="business" name="interests[]" value="business">
+                        <label for="business"><i class="fas fa-briefcase"></i> Business</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="education" name="interests[]" value="education">
+                        <label for="education"><i class="fas fa-graduation-cap"></i> Education</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="science" name="interests[]" value="science">
+                        <label for="science"><i class="fas fa-flask"></i> Science</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="arts" name="interests[]" value="arts">
+                        <label for="arts"><i class="fas fa-palette"></i> Arts</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="sports" name="interests[]" value="sports">
+                        <label for="sports"><i class="fas fa-football-ball"></i> Sports</label>
+                    </div>
+                    <div class="interest-item">
+                        <input type="checkbox" id="other" name="interests[]" value="other">
+                        <label for="other"><i class="fas fa-plus"></i> Other</label>
+                    </div>
+                </div>
+                <div class="other-interests-container">
+                    <div class="other-interest-input-group">
+                        <input type="text" id="other-interest-input" placeholder="Add other interest...">
+                        <button type="button" class="add-other-btn">Add</button>
+                    </div>
+                    <div class="other-interests-tags">
+                        <!-- Other interests will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <center><a href="{{url_for('profile')}}"><button type="submit" class="submit-btn" style="width: 500px;"><a href="{{url_for('profile')}}" style="text-decoration: none;">Complete Profile</a></button></a></center>
+        </form>
+    </div>
+
+    <script src="../static/js/dashboard.js"></script>
+</body>
+</html>
